@@ -984,13 +984,24 @@ def format_output(title, cur, headers, status, settings):
 
     if cur:
         headers = [case_function(utf8tounicode(x)) for x in headers]
-        rows = list(cur)
-        formatted = formatter.format_output(rows, headers, **output_kwargs)
+        if max_width is not None:
+            cur = list(cur)
+        column_types = None
+        if hasattr(cur, 'description'):
+            column_types = []
+            for d in cur.description:
+                if d[1] == 23:
+                    column_types.append(int)
+                elif d[1] == 1700:
+                    column_types.append(float)
+                else:
+                    column_types.append(type(""))
+        formatted = formatter.format_output(cur, headers, **output_kwargs)
         first_line = formatted[:formatted.find('\n')]
 
         if (not expanded and max_width and len(first_line) > max_width and headers):
             formatted = formatter.format_output(
-                rows, headers, format_name='vertical', **output_kwargs)
+                cur, headers, format_name='vertical', column_types=None, **output_kwargs)
 
         output.append(formatted)
 
