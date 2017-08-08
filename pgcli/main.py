@@ -995,7 +995,7 @@ def format_output(title, cur, headers, status, settings):
                 elif d[1] == 1700:
                     column_types.append(float)
                 else:
-                    column_types.append(type(""))
+                    column_types.append(text_type)
         formatted = formatter.format_output(cur, headers, **output_kwargs)
         first_line = formatted[:formatted.find('\n')]
 
