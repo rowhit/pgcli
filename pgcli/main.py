@@ -992,10 +992,10 @@ def format_output(title, cur, headers, status, settings):
             column_types = []
             for d in cur.description:
                 if d[1] in psycopg2.extensions.DECIMAL.values or \
-                    d[1] in psycopg2.extensions.FLOAT.values:
+                        d[1] in psycopg2.extensions.FLOAT.values:
                     column_types.append(float)
                 if d[1] == psycopg2.extensions.INTEGER.values or \
-                    d[1] in psycopg2.extensions.LONGINTEGER.values:
+                        d[1] in psycopg2.extensions.LONGINTEGER.values:
                     column_types.append(int)
                 else:
                     column_types.append(text_type)
