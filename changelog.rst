@@ -8,6 +8,7 @@ Features:
 * Improved formatting of arrays in output (Thanks: `Joakim Koljonen`_)
 * Don't quote identifiers that are non-reserved keywords. (Thanks: `Joakim Koljonen`_)
 * Remove the ``...`` in the continuation prompt and use empty space instead. (Thanks: `Amjith Ramanujam`_)
+* Port auto_vertical feature test from mycli to pgcli. (Thanks: `Dick Marinus`_)
 
 Bug Fixes:
 ----------
